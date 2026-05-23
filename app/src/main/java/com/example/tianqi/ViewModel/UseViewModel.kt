@@ -69,11 +69,9 @@ class UseViewModel: ViewModel(){
                 _apparentTemperature.value=realtime.apparent_temperature
 
             }
-            catch (e: Exception)
-            {
-                Log.e("UseViewModel","请求失败")
-                    e.printStackTrace()
-
+            catch (e: Exception) {
+                val errorMsg = "请求异常详情: ${e.message}\n${e.stackTraceToString()}"
+                Log.e("UseViewModel", errorMsg)
             }
             finally {
                 _loading.value=false
